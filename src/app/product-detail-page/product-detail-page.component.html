@@ -1,0 +1,33 @@
+<div class="product-detail-container">
+  <div class="product-image">
+    <img [src]="product?.photoUrl" alt="{{product?.name}}" />
+  </div>
+  <div class="product-info">
+    <h2 class="product-name">{{ product?.name }}</h2>
+
+    <div class="author-info">
+      <span>作者：</span>
+      @for(author of product?.authors; track $index) {
+      <span>{{ author }}</span>
+      @if(!$last) {
+      <span>、</span>
+      } }
+    </div>
+
+    <div class="company-info">
+      <span>公司：{{ product?.company }}</span>
+    </div>
+
+    <div class="price-info">
+      <span>價格：{{ product?.price | currency }}</span>
+      @if(product?.isDiscounted) {
+      <span class="special-price">特價</span>
+      }
+    </div>
+
+    <div class="action-buttons">
+      <button type="button" class="back-btn" (click)="goBack()">返回</button>
+      <button type="button" class="add-to-cart-btn" (click)="addToCart()">加入購物車</button>
+    </div>
+  </div>
+</div>

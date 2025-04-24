@@ -1,0 +1,19 @@
+<img [src]="photoUrl()" />
+<div class="content">
+  <strong [class.discounted]="isDiscounted()">{{ productName() }}</strong>
+</div>
+<div>
+  @for(author of authors(); track $index) {
+  <span>{{ author }}</span>
+  @if(!$last){
+  <span>、</span>
+  } }
+</div>
+<div class="company">
+  <span>{{ company() }}</span>
+  <span>{{ price() | currency}}</span>
+</div>
+<div class="button">
+  <button type="button" class="details" (click)="view.emit()">明細</button>
+  <button type="button" class="add" (click)="addToCart.emit()">加入購物車</button>
+</div>

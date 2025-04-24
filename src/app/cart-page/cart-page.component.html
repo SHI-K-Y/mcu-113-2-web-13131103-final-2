@@ -1,0 +1,59 @@
+<div class="cart-container">
+  <div class="section basic-info">
+    <h2>基本資料</h2>
+    <div class="form-group">
+      <label for="name">姓名</label>
+      <div class="input-container">
+        <input type="text" id="name" [(ngModel)]="name" placeholder="請輸入姓名" />
+        <div class="error-message" *ngIf="!name">請輸入姓名</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="address">地址</label>
+      <div class="input-container">
+        <input type="text" id="address" [(ngModel)]="address" placeholder="請輸入地址" />
+        <div class="error-message" *ngIf="!address">請輸入地址</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phone">電話</label>
+      <div class="input-container">
+        <input type="tel" id="phone" [(ngModel)]="phone" placeholder="請輸入電話" />
+        <div class="error-message" *ngIf="!phone">請輸入電話</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section order-items">
+    <h2>購買項目</h2>
+
+    @if (cartItems.length > 0) { @for(item of cartItems; track $index) {
+    <div class="product-row">
+      <div class="quantity">{{ item.quantity }}</div>
+      <div class="product-name">{{ item.product.name }}</div>
+      <div class="product-quantity">
+        <input type="number" [ngModel]="item.quantity" (ngModelChange)="updateQuantity($index, $event)" min="1" max="99" />
+      </div>
+      <div class="product-price">${{ item.product.price.toFixed(2) }}</div>
+      <div class="remove-button">
+        <button type="button" (click)="removeItem($index)">刪除</button>
+      </div>
+    </div>
+    }
+
+    <div class="total-row">
+      <div class="total-label">總計:</div>
+      <div class="total-amount">${{ getTotalAmount().toFixed(2) }}</div>
+    </div>
+
+    <div class="submit-container">
+      <button type="button" (click)="submitOrder()" class="submit-button">送出訂單 ({{ getTotalAmount() | currency }})</button>
+    </div>
+    } @else {
+    <div class="empty-cart">
+      <p>您的購物車是空的</p>
+      <a routerLink="/products" class="continue-shopping">繼續購物</a>
+    </div>
+    }
+  </div>
+</div>
