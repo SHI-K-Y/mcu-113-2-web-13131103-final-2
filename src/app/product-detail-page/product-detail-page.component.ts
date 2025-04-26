@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../models/product';
 import { CurrencyPipe } from '@angular/common';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-product-detail-page',
@@ -13,6 +14,7 @@ import { CurrencyPipe } from '@angular/common';
 export class ProductDetailPageComponent {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private cartService = inject(CartService);
 
   product?: Product;
 
@@ -42,7 +44,8 @@ export class ProductDetailPageComponent {
 
   addToCart(): void {
     if (this.product) {
-      this.router.navigate(['product', 'form', this.product.name]);
+      this.cartService.addToCart(this.product);
+      alert(`已將 ${this.product.name} 加入購物車`);
     }
   }
 

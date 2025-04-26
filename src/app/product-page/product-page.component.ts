@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ProductCardListComponent } from '../product-card-list/product-card-list.component';
 import { Product } from '../models/product';
 import { Router } from '@angular/router';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-product-page',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class ProductPageComponent {
   private router = inject(Router);
+  private cartService = inject(CartService);
 
   products: Product[] = [
     new Product({
@@ -56,11 +58,11 @@ export class ProductPageComponent {
   ];
 
   onAddToCart(product: Product): void {
-    this.router.navigate(['product', 'form', product.name]);
+    this.cartService.addToCart(product);
+    alert(`已將 ${product.name} 加入購物車`);
   }
 
   onView(product: Product): void {
-    console.log('onView', product);
     this.router.navigate(['product', 'view', product.name]);
   }
 }
