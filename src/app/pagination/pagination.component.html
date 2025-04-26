@@ -1,3 +1,5 @@
-@for (i of range(); track $index){
-<button type="button" [class.active]="pageIndex() === i" (click)="pageIndex.set(i)">{{ i }}</button>
-}
+<div class="pagination-container">
+  @for (i of range(); track $index){
+  <button type="button" [class.active]="pageIndex() === i" (click)="pageIndex.set(i)">{{ i }}</button>
+  }
+</div>

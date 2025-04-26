@@ -1,10 +1,12 @@
-import { Component, computed, input, model, numberAttribute, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, computed, input, model, numberAttribute } from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.scss',
+  standalone: true,
 })
 export class PaginationComponent {
   readonly totalCount = input.required<number, string | number>({ transform: numberAttribute });
