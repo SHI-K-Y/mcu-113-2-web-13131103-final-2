@@ -1,6 +1,19 @@
 :host {
   display: block;
 
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .left,
+  .right {
+    display: flex;
+    align-items: center;
+  }
+
   a {
     display: inline-block;
     padding: 10px 20px;
@@ -8,6 +21,7 @@
     color: #005cbb;
     cursor: pointer;
     text-decoration: none;
+    position: relative;
 
     &:hover,
     &:active,
@@ -22,5 +36,28 @@
     &:active {
       background-color: #005ccb1a;
     }
+
+    &.cart-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  }
+
+  .cart-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+    padding: 0 4px;
+    box-sizing: border-box;
   }
 }
