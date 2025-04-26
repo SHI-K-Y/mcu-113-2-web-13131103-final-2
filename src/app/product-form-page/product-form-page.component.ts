@@ -18,7 +18,6 @@ export class ProductFormPageComponent {
   product?: Product;
   quantity = 1;
 
-  // Form fields
   name = '';
   address = '';
   phone = '';
@@ -31,7 +30,6 @@ export class ProductFormPageComponent {
       return;
     }
 
-    // Mock data - in a real app this would come from a service
     this.product = new Product({
       name: productName,
       authors: ['作者 A', '作者 B', '作者 C'],

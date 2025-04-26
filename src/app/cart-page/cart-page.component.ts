@@ -12,7 +12,6 @@ import { Product } from '../models/product';
   styleUrl: './cart-page.component.scss',
 })
 export class CartPageComponent {
-  // Mock cart data - in a real app this would come from a service
   cartItems: { product: Product; quantity: number }[] = [
     {
       product: new Product({
@@ -27,7 +26,6 @@ export class CartPageComponent {
     },
   ];
 
-  // Form fields for customer information
   name = '';
   address = '';
   phone = '';
